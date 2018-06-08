@@ -15,7 +15,7 @@ from flask import Flask, jsonify, render_template, request, flash, redirect, url
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///DC_airbnb.db", echo=False)
+engine = create_engine("sqlite:///chicagobnbnew.db", echo=False)
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -166,7 +166,7 @@ def sharedroom(neighbourhood):
     for result in Shared_room_Listings_results:
         
         
-        Shared_room_dict["Average_Private_room_Price"] = result[1]
+        Shared_room_dict["Average_shared_room_price"] = result[1]
         Shared_room_dict["Average_Number_of_Reviews"] = result[2]
         Shared_room_dict["Average_Reviews_per_Month"] = result[3]
         Shared_room_dict["Average_Availability_365"] = result[4]
@@ -191,13 +191,13 @@ def listprice(neighbourhood):
     price_data = [{
 
         "airbnb_ids": eachNH_df ["airbnb_id"].values.tolist(),
-        "price": eachNH_df ["price"].values.tolist(),
+        "price": eachNH_df["price"].values.tolist(),
         "number_of_reviews": eachNH_df ["number_of_reviews"].values.tolist(),
-        "host_id": eachNH_df ["host_id"].values.tolist(),
+        "host_id": eachNH_df["host_id"].values.tolist(),
         "calculated_host_listings_count":eachNH_df ["calculated_host_listings_count"].values.tolist(),
-        "room_type": eachNH_df ["room_type"].values.tolist(),
-        "minimum_nights": eachNH_df ["minimum_nights"].values.tolist(),
-        "availability_365": eachNH_df ["availability_365"].values.tolist(),
+        "room_type": eachNH_df["room_type"].values.tolist(),
+        "minimum_nights": eachNH_df["minimum_nights"].values.tolist(),
+        "availability_365": eachNH_df["availability_365"].values.tolist(),
            
     }]
     print(price_data)
@@ -210,7 +210,7 @@ def correlation():
 
     neighbourhood_compare_data = [{
         "neighbourhood": NH_compare_data["neighbourhood"].values.tolist(),
-        "airbnb_counts_per_neighbourhood": NH_compare_data ["airbnb_counts_per_neighbourhood"].values.tolist(),
+        "airbnb_counts_per_neighbourhood": NH_compare_data["airbnb_counts_per_neighbourhood"].values.tolist(),
         "total_reviews_per_neighbourhood": NH_compare_data["total_reviews_per_neighbourhood"].values.tolist(),
         "number_of_crimes": NH_compare_data ["number_of_crimes"].values.tolist()
 
